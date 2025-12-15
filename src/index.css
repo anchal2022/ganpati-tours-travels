@@ -1,0 +1,248 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* page scroll smooth */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  /* halka orange + blue gradient background */
+  background:
+    radial-gradient(circle at top left, #ffe4cc, transparent 55%),
+    radial-gradient(circle at bottom right, #e0f2fe, transparent 55%),
+    #f3f4f6;
+  color: #111827;
+}
+
+/* Root should take full width + height */
+#root {
+  min-height: 100vh;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reusable layout classes */
+.app-main {
+  padding: 24px;
+  position: relative;
+  z-index: 1; /* text cards watermark ke upar rahe */
+}
+
+/* Headings */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #f97316; /* orange */
+  color: white;
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(249, 115, 22, 0.45);
+}
+
+/* WhatsApp style outline button */
+.btn-outline {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534; /* dark green */
+}
+
+.btn-outline:hover {
+  background-color: #dcfce7;
+}
+
+/* Simple card */
+.card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #f1f1f1;          /* light border for premium look */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);        /* slight lift on hover */
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.16);
+}
+
+/* Fleet slider */
+.fleet-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-top: 12px;
+}
+
+.fleet-card {
+  flex: 0 0 250px;
+  background-color: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.fleet-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.fleet-tag {
+  display: inline-block;
+  margin-right: 6px;
+  margin-top: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* Simple form styles (Booking + Feedback) */
+.form {
+  display: grid;
+  gap: 14px;
+  max-width: 480px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.form-row label {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.form-row textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* HERO BUTTON ROW */
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Horizontal sliders ka scrollbar hide */
+div::-webkit-scrollbar {
+  height: 0px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .app-main {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* Sidebar top bar + hamburger */
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 12px 16px !important;
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* hamburger button style */
+  .mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  /* nav by default hidden on mobile */
+  .sidebar-nav {
+    display: none !important;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* jab sidebar--open class ho (button click), tab nav dikhana */
+  .sidebar.sidebar--open .sidebar-nav {
+    display: grid !important;
+  }
+
+  .sidebar > div:last-child {
+    display: none; /* bottom wala support text hide on mobile */
+  }
+}
